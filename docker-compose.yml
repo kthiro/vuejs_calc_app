@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  vue:
+    build: . # ビルドするDockerfileの存在するディレクトリを指定
+    image: kthiro/vuejs:1.2 # イメージのリポジトリ名:タグ名を指定
+    container_name: vue # コンテナ名を指定
+    command: /bin/bash
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
+    tty: true
+    stdin_open: true
