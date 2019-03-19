@@ -9,6 +9,6 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - .:/app
+      - .:/vue_app
     tty: true
     stdin_open: true
