@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld :title="promptMsg" @callNameInput="showMsgFromHelloWorld" />
+    <hr>
+    <p>{{ msgFromHelloWorld }}</p>
+    <hr>
+    <button @click="callPrompt">右上のタイトルを変更する</button>
   </div>
 </template>
 
@@ -9,10 +12,24 @@
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'app',
+  name: 'app', 
   components: {
     HelloWorld
-  }
+  }, 
+  data: function() {
+    return {
+      promptMsg: 'Hello Vue!', 
+      msgFromHelloWorld: 'fromHW', 
+    }
+  }, 
+  methods: {
+    callPrompt: function() {
+      this.promptMsg = prompt('new title:');
+    }, 
+    showMsgFromHelloWorld: function(nameInput) {
+      this.msgFromHelloWorld = nameInput;
+    }
+  }, 
 }
 </script>
 
